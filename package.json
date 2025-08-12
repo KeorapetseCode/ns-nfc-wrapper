@@ -1,5 +1,5 @@
 {
-  "name": "nc-yoco-wrapper",
+  "name": "ns-yoco-wrapper",
   "main": "app/app.ts",
   "version": "1.0.0",
   "private": true,
@@ -8,6 +8,7 @@
     "@nativescript/theme": "^3.1.0"
   },
   "devDependencies": {
+    "@nativescript/android": "8.9.1",
     "@nativescript/types": "~8.9.0",
     "@nativescript/webpack": "~5.0.0",
     "typescript": "~5.4.0"
