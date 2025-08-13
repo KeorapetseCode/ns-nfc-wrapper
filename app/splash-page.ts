@@ -2,7 +2,7 @@ import { EventData, Page } from '@nativescript/core';
 import { Frame } from '@nativescript/core';
 
 export function navigatingTo(args: EventData) {
-  const page = <Page>args.object;
+  const page = args.object as Page; 
 
   setTimeout(() => {
     Frame.topmost().navigate({

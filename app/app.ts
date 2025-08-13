@@ -6,7 +6,7 @@ purpose of the file is to pass control to the app’s first module.
 
 import { Application } from '@nativescript/core'
 
-Application.run({ moduleName: 'splash-page' })
+Application.run({ moduleName: 'app-root' })
 
 /*
 Do not place any code after the application has been started as it will not
