@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+<!-- <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
     <ActionBar title="Landing Page" icon="" />
 
     <StackLayout class="p-20">
@@ -6,4 +6,34 @@
         <Button text="TAP" tap="{{ onTap }}" class="-primary" />
         <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
     </StackLayout>
+</Page> -->
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      navigatingTo="navigatingTo"
+      xmlns:nav="components/nav-bar/nav-bar"
+      xmlns:btn="components/buttons/primary-button">
+
+  <GridLayout rows="auto, *, auto" class="page">
+
+    <!-- Top Illustration or Message -->
+    <StackLayout row="0" class="header-section">
+      <Image src="~/images/contactless.png" stretch="aspectFit" />
+      <Label text="Tap your card" class="h1 text-center" />
+    </StackLayout>
+
+    <!-- Middle Interaction Area -->
+    <StackLayout row="1" class="interaction-section">
+      <!-- You could add a custom keypad component here -->
+      <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+    </StackLayout>
+
+    <!-- Bottom Buttons -->
+    <StackLayout row="2" orientation="horizontal" class="action-buttons">
+      <btn:PrimaryButton text="Pay Here" icon="~/images/ic_pay.png" tap="{{ onPay }}" />
+      <btn:PrimaryButton text="Transaction History" icon="~/images/ic_history.png" tap="{{ onHistory }}" />
+    </StackLayout>
+
+    <!-- Optional NavBar -->
+    <nav:NavBar row="3" />
+    
+  </GridLayout>
 </Page>
