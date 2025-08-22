@@ -8,32 +8,28 @@
     </StackLayout>
 </Page> -->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
-      navigatingTo="navigatingTo"
-      xmlns:nav="components/nav-bar/nav-bar"
-      xmlns:btn="components/buttons/primary-button">
+	navigatingTo="navigatingTo"
+	xmlns:nav="components/navigation-bar/navigation-bar"
+    xmlns:btn="components/buttons/tab-buttons/tab-button">
 
-  <GridLayout rows="auto, *, auto" class="page">
-
+	<GridLayout rows="auto, *, auto, auto" class="page">
     <!-- Top Illustration or Message -->
-    <StackLayout row="0" class="header-section">
-      <Image src="~/images/contactless.png" stretch="aspectFit" />
-      <Label text="Tap your card" class="h1 text-center" />
-    </StackLayout>
+		<StackLayout row="0" class="header-section">
+			<Image src="./assets/global/pay01.png" stretch="aspectFit" />
+			<Label text="Tap your card" class="h1 text-center" />
+		</StackLayout>
 
-    <!-- Middle Interaction Area -->
-    <StackLayout row="1" class="interaction-section">
-      <!-- You could add a custom keypad component here -->
-      <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
-    </StackLayout>
+		<!-- Middle Interaction Area -->
+		<StackLayout row="1" class="interaction-section">
+		<!-- You could add a custom keypad component here -->
+			<Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+		</StackLayout>
 
-    <!-- Bottom Buttons -->
-    <StackLayout row="2" orientation="horizontal" class="action-buttons">
-      <btn:PrimaryButton text="Pay Here" icon="~/images/ic_pay.png" tap="{{ onPay }}" />
-      <btn:PrimaryButton text="Transaction History" icon="~/images/ic_history.png" tap="{{ onHistory }}" />
-    </StackLayout>
-
-    <!-- Optional NavBar -->
-    <nav:NavBar row="3" />
-    
-  </GridLayout>
+		<!-- Bottom Buttons -->
+		<StackLayout row="2" orientation="horizontal" class="action-buttons">
+			<btn:tab-button text="Pay" icon="./assets/global/pay01.png" tap="{{ onPay }}"/>
+			<!-- <btn: text="Transaction History" icon="~/assets/global/payment_history01.png" tap="{{ onHistory }}" /> -->
+		</StackLayout>
+		<nav:navigation-bar row="3" />
+	</GridLayout>
 </Page>

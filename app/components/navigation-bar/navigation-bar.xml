@@ -1,13 +1,13 @@
 <StackLayout xmlns="http://schemas.nativescript.org/tns.xsd"
-             xmlns:btn="components/buttons/tab-button"
+             xmlns:btn="components/buttons/tab-buttons/tab-button"
              class="nav-bar"
              tabTap="onTabTap">
 
   <btn:TabButton title="Pay"
-                 icon="./assets/payment-icons/pay01.png"
+                 icon="./assets/global/pay01.png"
                  tabName="pay" />
 
   <btn:TabButton title="Payment History"
-                 icon="./assets/payment-icons/payment_history01.png"
+                 icon="./assets/global/payment_history01.png"
                  tabName="history" />
 </StackLayout>
