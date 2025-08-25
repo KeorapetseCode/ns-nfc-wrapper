@@ -1,7 +1,15 @@
-<FlexboxLayout xmlns="http://schemas.nativescript.org/tns.xsd"
-             xmlns:btn="components/buttons/tab-buttons/tab-button"
+<!-- <FlexboxLayout xmlns="http://schemas.nativescript.org/tns.xsd"
+             xmlns:btn="components/buttons/navigation-buttons/navigation-button"
              class="navigation-bar"
-             tabTap="onTabTap">
-    <btn:TabButton />
-    <btn:TabButton />
+             navigationTap="onNavigationTap">
+    <btn:btn icon="{{ myIcon }}" title="{{ myTitle }}" />
+    <btn:NavigationButton src="~/assets/payment_history01.png" text="Payment History" buttonName="Payment_History" />
+</FlexboxLayout> -->
+<FlexboxLayout xmlns="http://schemas.nativescript.org/tns.xsd"
+               xmlns:btn="components/buttons/navigation-buttons/navigation-button"
+               navigatingTo="onNavigatingTo">
+  <!-- use binding, not literal strings -->
+    <btn:btn icon="{{ myIcon }}" title="{{ myTitle }}" buttonName="pay" tap="onNavigationTap" />
+  <!-- or separate values if you want different ones per button -->
+  <!-- <btn:btn icon="{{ otherIcon }}" title="{{ otherTitle }}" buttonName="history" tap="onNavigationTap" /> -->
 </FlexboxLayout>

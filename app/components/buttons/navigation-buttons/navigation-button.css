@@ -1,0 +1,20 @@
+.navigation-button-wrapper{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  padding: 8 10;
+  background-color: black;
+}
+
+.icon {
+  width: 44;
+  height: 44;
+  background-color: lightblue;
+}
+
+.label {
+  font-size: 72;
+  margin-top: 5;
+  background-color: rgb(10, 204, 59);
+}

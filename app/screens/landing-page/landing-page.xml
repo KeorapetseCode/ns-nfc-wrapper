@@ -1,7 +1,8 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
 	navigatingTo="navigatingTo"
-	xmlns:nav="components/navigation-bar/navigation-bar"
-    xmlns:btn="components/buttons/tab-buttons/tab-button">
+	xmlns:navigationBar="components/navigation-bar/navigation-bar"
+    xmlns:keypad="components/buttons/keypad-buttons">
+
 
 	<GridLayout rows="auto, *, auto, auto" class="page">
     <!-- Top Illustration or Message -->
@@ -13,9 +14,10 @@
 		<StackLayout row="1" class="interaction-section">
 		<!-- You could add a custom keypad component here -->
 			<Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+			<keypad:keypad-buttons />
 		</StackLayout>
 
 		<!-- Bottom Buttons -->
-		<nav:navigation-bar row="3" />
+		<navigationBar:navigation-bar row="3" />
 	</GridLayout>
 </Page>

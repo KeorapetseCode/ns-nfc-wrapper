@@ -1,0 +1,19 @@
+<GridLayout rows="auto, auto, auto, auto, auto" columns="*, *, *" class="keypad-container">
+  <TextField row="0" colSpan="3" class="keypad-display" editable="false" text="{{ displayValue }}" />
+
+  <Button row="1" col="0" text="1" tap="onKeyTap" class="key-button" />
+  <Button row="1" col="1" text="2" tap="onKeyTap" class="key-button" />
+  <Button row="1" col="2" text="3" tap="onKeyTap" class="key-button" />
+  
+  <Button row="2" col="0" text="4" tap="onKeyTap" class="key-button" />
+  <Button row="2" col="1" text="5" tap="onKeyTap" class="key-button" />
+  <Button row="2" col="2" text="6" tap="onKeyTap" class="key-button" />
+  
+  <Button row="3" col="0" text="7" tap="onKeyTap" class="key-button" />
+  <Button row="3" col="1" text="8" tap="onKeyTap" class="key-button" />
+  <Button row="3" col="2" text="9" tap="onKeyTap" class="key-button" />
+  
+  <Button row="4" col="0" text="." tap="onKeyTap" class="key-button" />
+  <Button row="4" col="1" text="0" tap="onKeyTap" class="key-button" />
+  <Button row="4" col="2" text="←" tap="onKeyTap" class="key-button backspace" />
+</GridLayout>
