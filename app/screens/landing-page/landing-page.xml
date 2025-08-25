@@ -1,12 +1,3 @@
-<!-- <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
-    <ActionBar title="Landing Page" icon="" />
-
-    <StackLayout class="p-20">
-        <Label text="Tap the button" class="h1 text-center" />
-        <Button text="TAP" tap="{{ onTap }}" class="-primary" />
-        <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
-    </StackLayout>
-</Page> -->
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
 	navigatingTo="navigatingTo"
 	xmlns:nav="components/navigation-bar/navigation-bar"
@@ -15,8 +6,7 @@
 	<GridLayout rows="auto, *, auto, auto" class="page">
     <!-- Top Illustration or Message -->
 		<StackLayout row="0" class="header-section">
-			<Image src="./assets/global/pay01.png" stretch="aspectFit" />
-			<Label text="Tap your card" class="h1 text-center" />
+			<Image src="~/assets/pay01.png" stretch="aspectFit" width="120" height="120" />
 		</StackLayout>
 
 		<!-- Middle Interaction Area -->
@@ -26,10 +16,6 @@
 		</StackLayout>
 
 		<!-- Bottom Buttons -->
-		<StackLayout row="2" orientation="horizontal" class="action-buttons">
-			<btn:tab-button text="Pay" icon="./assets/global/pay01.png" tap="{{ onPay }}"/>
-			<!-- <btn: text="Transaction History" icon="~/assets/global/payment_history01.png" tap="{{ onHistory }}" /> -->
-		</StackLayout>
 		<nav:navigation-bar row="3" />
 	</GridLayout>
 </Page>

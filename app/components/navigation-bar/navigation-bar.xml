@@ -1,13 +1,7 @@
-<StackLayout xmlns="http://schemas.nativescript.org/tns.xsd"
+<FlexboxLayout xmlns="http://schemas.nativescript.org/tns.xsd"
              xmlns:btn="components/buttons/tab-buttons/tab-button"
-             class="nav-bar"
+             class="navigation-bar"
              tabTap="onTabTap">
-
-  <btn:TabButton title="Pay"
-                 icon="./assets/global/pay01.png"
-                 tabName="pay" />
-
-  <btn:TabButton title="Payment History"
-                 icon="./assets/global/payment_history01.png"
-                 tabName="history" />
-</StackLayout>
+    <btn:TabButton />
+    <btn:TabButton />
+</FlexboxLayout>

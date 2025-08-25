@@ -1,8 +1,9 @@
-.nav-bar {
+.navigation-bar {
   flex-direction: row;
   justify-content: space-around;
-  padding: 10 0;
-  background-color: #ffffff;
-  border-top-width: 1;
+  align-items: center;
+  padding: 8 0;
+  /* background-color: #f21818; */
+  border-top-width: 2;
   border-color: #ccc;
 }
