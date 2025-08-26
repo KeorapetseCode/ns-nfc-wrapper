@@ -1,41 +1,57 @@
-import { EventData, Page, Frame, Observable } from "@nativescript/core";
+import { FlexboxLayout, EventData, ObservableArray, Property, Frame } from '@nativescript/core';
 
-// export function onNavigationTap(args: any) {
+export class NavigationBar extends FlexboxLayout {
 
-//     const buttonName = args.data.buttonName;
-//     const page = (args.object as any).page as Page;
+  static navItemsProperty = new Property<NavigationBar, ObservableArray<any>>({
+    name: 'navItems',
+    defaultValue: new ObservableArray(),
+    affectsLayout: true
+  });
 
-//     page.bindingContext = {myIcon: "~/assets/pay01.png", myTitle: "Pay"};
+  static selectedIndexProperty = new Property<NavigationBar, number>({
+    name: 'selectedIndex',
+    defaultValue: 0,
+    valueConverter: (v) => parseInt(v)
+  });
 
-//     const frame = page.getViewById("contentFrame") as Frame;
+  navItems: ObservableArray<any>;
+  selectedIndex: number;
 
-//     if (buttonName === "pay") 
-//         frame.navigate("screens/landing-page/landing-page");
-//     else if (buttonName === "history")
-//         frame.navigate("screens/payment-history/payment-history");
-// }
-export function onNavigatingTo(args: EventData) {
+  constructor() {
+    super();
+    console.log('✅ NavigationBar initialized');
+    // You can set default navItems here if not passed from parent
+  }
 
-  const page = args.object as Page;
-  // use Observable for reactive properties
-  const bindingContext = new Observable();
-  bindingContext.set("myIcon", "~/assets/pay01.png");
-  bindingContext.set("myTitle", "Pay HERE");
-  // add more properties if needed
-  page.bindingContext = bindingContext;
-}
+  onNavigationTap(args: EventData) {
 
-export function onNavigationTap(args: any) {
+    const button = args.object as any;
+    const buttonName = button.buttonName;
+    const index = this.navItems.indexOf(this.navItems.find(item => item.buttonName === buttonName));
 
-  const buttonName = args.object.buttonName; // or args.object.id / attributes
-  const page = (args.object as any).page as Page;
-  const frame = page.getViewById("contentFrame") as Frame;
+    if (index !== -1) {
+      this.selectedIndex = index; // Sync with BottomNavigation
+      console.log(`Navigating to ${buttonName} tab`);
 
-  // DO NOT overwrite page.bindingContext here
-  if (buttonName === "pay") {
-    console.log("Navigating to landing page");
-    //frame.navigate("screens/landing-page/landing-page");
-  } else if (buttonName === "history") {
-    frame.navigate("screens/payment-history/payment-history");
+      // Get the root frame for nested navigation (adjust IDs as needed)
+      const rootPage = this.page;
+      const bottomNav = rootPage.getViewById('bottomNav') as any;
+      const activeFrameId = index === 0 ? 'payFrame' : 'historyFrame'; // Map to your frames
+      const activeFrame = bottomNav.getViewById(activeFrameId) as Frame;
+
+      if (activeFrame) {
+        if (buttonName === 'pay') {
+          activeFrame.navigate('screens/landing-page/landing-page');
+        } else if (buttonName === 'history') {
+          activeFrame.navigate('screens/payment-history/payment-history');
+        }
+      } else {
+        console.error('❌ Could not find active frame');
+      }
+    }
   }
 }
+
+// Register properties for binding
+NavigationBar.navItemsProperty.register(NavigationBar);
+NavigationBar.selectedIndexProperty.register(NavigationBar);

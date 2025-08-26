@@ -16,7 +16,7 @@ export function navigatingTo(args: EventData) {
     // 2. Define the 'onPay' function for the button's tap event.
     // The XML has: <btn:tab-button ... tap="{{ onPay }}" />
     viewModel.set("onPay", () => {
-        console.log("Pay button was tapped!");
+        //console.log("Pay button was tapped!");
         viewModel.set("message", "Processing payment...");
         // You would add your navigation or payment logic here.
     });

@@ -1,23 +1,19 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
-	navigatingTo="navigatingTo"
-	xmlns:navigationBar="components/navigation-bar/navigation-bar"
-    xmlns:keypad="components/buttons/keypad-buttons">
+      navigatingTo="navigatingTo"
+      xmlns:keypad="components/keypad-buttons">
 
-
-	<GridLayout rows="auto, *, auto, auto" class="page">
+  <GridLayout rows="auto, *, auto" class="page">
+    
     <!-- Top Illustration or Message -->
-		<StackLayout row="0" class="header-section">
-			<Image src="~/assets/pay01.png" stretch="aspectFit" width="120" height="120" />
-		</StackLayout>
+    <StackLayout row="0" class="header-section">
+      <Image src="~/assets/pay01.png" stretch="aspectFit" width="120" height="120" />
+    </StackLayout>
 
-		<!-- Middle Interaction Area -->
-		<StackLayout row="1" class="interaction-section">
-		<!-- You could add a custom keypad component here -->
-			<Label text="{{ message }}" class="h2 text-center" textWrap="true" />
-			<keypad:keypad-buttons />
-		</StackLayout>
-
-		<!-- Bottom Buttons -->
-		<navigationBar:navigation-bar row="3" />
-	</GridLayout>
+    <!-- Middle Interaction Area -->
+    <StackLayout row="1" class="interaction-section">
+      <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+      <keypad:keypad-buttons />
+    </StackLayout>
+    
+  </GridLayout>
 </Page>

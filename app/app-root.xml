@@ -1,2 +1,20 @@
-<Frame defaultPage="/screens/landing-page/landing-page">
-</Frame>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:mdt="@nativescript-community/ui-material-bottom-navigation"
+      xmlns:nav="components/navigation-bar/navigation-bar"
+      loaded="onPageLoaded">
+  <GridLayout rows="*, auto">
+    <!-- Content area: BottomNavigation without TabStrip for custom bar integration -->
+    <mdt:BottomNavigation id="bottomNav" row="0" selectedIndex="{{ selectedIndex }}">
+      <mdt:TabContentItem>
+        <Frame id="payFrame" defaultPage="screens/landing-page/landing-page" />
+      </mdt:TabContentItem>
+      <mdt:TabContentItem>
+        <Frame id="historyFrame" defaultPage="screens/payment-history/payment-history" />
+      </mdt:TabContentItem>
+      <!-- Add more TabContentItems as needed -->
+    </mdt:BottomNavigation>
+
+    <!-- Custom persistent bottom bar component -->
+    <nav:NavigationBar row="1" navItems="{{ navItems }}" selectedIndex="{{ selectedIndex }}" />
+  </GridLayout>
+</Page>

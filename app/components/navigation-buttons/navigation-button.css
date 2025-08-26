@@ -8,13 +8,13 @@
 }
 
 .icon {
-  width: 44;
-  height: 44;
+  width: 28;
+  height: 28;
   background-color: lightblue;
 }
 
 .label {
   font-size: 72;
   margin-top: 5;
-  background-color: rgb(10, 204, 59);
+  /* background-color: rgb(10, 204, 59); */
 }
