@@ -1,4 +1,5 @@
-import { EventData, Observable, Frame, Page } from '@nativescript/core';
+import { EventData, Observable, Page } from '@nativescript/core';
+//import { NavigationBar } from './components/navigation-bar/navigation-bar';
 
 export function onPageLoaded(args: EventData) {
     
@@ -6,8 +7,9 @@ export function onPageLoaded(args: EventData) {
     const vm = new Observable();
 
     vm.set('navItems', [
-        { icon: '~/assets/pay01.png', title: 'Pay', buttonName: 'pay' },
-        { icon: '~/assets/payment_history01.png', title: 'History', buttonName: 'history' }
+        { title: 'Pay', buttonName: 'pay' },
+        { title: 'Pending Payment', buttonName: 'pending' },
+        { title: 'History', buttonName: 'history' }
     ]);
 
     vm.set('selectedIndex', 0); // Initial tab

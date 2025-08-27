@@ -1,14 +1,12 @@
 <FlexboxLayout  xmlns="http://schemas.nativescript.org/tns.xsd"
-                xmlns:btn="components/navigation-buttons/navigation-button"
-                class="navigation-bar">
+        class="navigation-bar">
   
   <Repeater items="{{ navItems }}">
-    <Repeater.itemTemplate>
-      <btn:btn  icon="{{ icon }}" 
-                title="{{ title }}"
-                buttonName="{{ buttonName }}"
-                tap="onNavigationTap" />
-    </Repeater.itemTemplate>
+  <Repeater.itemTemplate>
+    <Button text="{{ title }}"
+        class="nav-button"
+        tap="onNavigationTap" />
+  </Repeater.itemTemplate>
   </Repeater>
 
 </FlexboxLayout>

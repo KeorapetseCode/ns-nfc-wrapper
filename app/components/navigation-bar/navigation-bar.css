@@ -8,3 +8,18 @@
   border-top-width: 2;
   border-color: #ccc;
 }
+
+.nav-button {
+  padding: 10px 15px;
+  background-color: #0e3762;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
