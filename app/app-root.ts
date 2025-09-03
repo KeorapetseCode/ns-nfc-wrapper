@@ -1,5 +1,4 @@
 import { EventData, Observable, Page } from '@nativescript/core';
-//import { NavigationBar } from './components/navigation-bar/navigation-bar';
 
 export function onPageLoaded(args: EventData) {
     

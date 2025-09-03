@@ -1,7 +1,0 @@
-<FlexboxLayout  xmlns="http://schemas.nativescript.org/tns.xsd"
-                class="navigation-button-wrapper"
-                tap="onTap">
-  <Image src="{{ icon }}" class="icon" />
-  <Label text='{{ title }}' class="label" />
-  
-</FlexboxLayout>
