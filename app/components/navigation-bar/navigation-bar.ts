@@ -35,19 +35,76 @@ export class NavigationBar extends FlexboxLayout {
 			const button = new FlexboxLayout();
 			button.className = 'navigation-button-wrapper';
 			
+			// Set selected state for Pay button (index 0) by default
+			if (index === this.selectedIndex) {
+				button.className += ' selected';
+			}
+			
 			const label = new Label();
 			label.text = item.title;
 			label.className = 'label';
 			
+			// Set selected state for label too
+			if (index === this.selectedIndex) {
+				label.className += ' selected';
+			}
+			
 			button.addChild(label);
 			
-			// Add tap handler
+			// Add tap handler with navigation logic
 			button.on('tap', () => {
 				console.log('🔘 Navigation button tapped:', item);
+				this.handleNavigation(item, index);
 			});
 			
 			this.addChild(button);
 		});
+	}
+
+	private handleNavigation(item: any, index: number) {
+		// Update selected index
+		this.updateSelectedIndex(index);
+		
+		// Handle navigation based on button type
+		switch (item.buttonName) {
+			case 'pay':
+				// Navigate to landing page
+				Frame.topmost().navigate({
+					moduleName: 'screens/landing-page/landing-page',
+					clearHistory: false
+				});
+				break;
+			case 'history':
+				// Navigate to payment history page
+				Frame.topmost().navigate({
+					moduleName: 'screens/payment-history/payment-history',
+					clearHistory: false
+				});
+				break;
+			default:
+				console.log('Unknown navigation item:', item.buttonName);
+		}
+	}
+
+	public updateSelectedIndex(newIndex: number) {
+		// Update the selected index
+		this.selectedIndex = newIndex;
+		
+		// Update the visual state of all buttons
+		for (let i = 0; i < this.getChildrenCount(); i++) {
+			const child = this.getChildAt(i) as FlexboxLayout;
+			const label = child.getChildAt(0) as Label;
+			
+			if (i === newIndex) {
+				// Selected state
+				child.className = 'navigation-button-wrapper selected';
+				label.className = 'label selected';
+			} else {
+				// Unselected state
+				child.className = 'navigation-button-wrapper';
+				label.className = 'label';
+			}
+		}
 	}
 
 	static navItemsProperty = new Property<NavigationBar, ObservableArray<any>>({
@@ -71,6 +128,10 @@ export class NavigationBar extends FlexboxLayout {
 		valueConverter: (v) => parseInt(v, 10),
 		valueChanged: (target: NavigationBar, oldValue, newValue) => {
 			target.selectedIndex = newValue;
+			// Refresh the visual state when selectedIndex changes from parent
+			if (target.getChildrenCount() > 0) {
+				target.updateSelectedIndex(newValue);
+			}
 		}
 	});
 }

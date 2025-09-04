@@ -16,7 +16,10 @@ export function onKeyTap(args: EventData): void {
     const keyValue = button.text as string;
     let currentValue = viewModel.get('displayValue') as string;
 
-    if (keyValue === '←') {
+    if (currentValue.length < 1 && (keyValue === '←' || keyValue === '.' || keyValue === '00')){
+        //return;
+    } 
+    else if (keyValue === '←' && currentValue.length > 0) {
         currentValue = currentValue.slice(0, -1);
     } else {
         currentValue += keyValue;
