@@ -7,7 +7,6 @@ export function onPageLoaded(args: EventData) {
 
     vm.set('navItems', [
         { title: 'Pay', buttonName: 'pay' },
-        { title: 'Pending Payment', buttonName: 'pending' },
         { title: 'History', buttonName: 'history' }
     ]);
 

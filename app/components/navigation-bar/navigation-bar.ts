@@ -2,10 +2,10 @@ import { FlexboxLayout, EventData, ObservableArray, Property, Frame, Label } fro
 
 // Simple function for navigation tap events (not tied to custom class)
 export function onNavigationTap(args: EventData) {
-	console.log('🔘 Navigation button tapped');
+	//console.log('🔘 Navigation button tapped');
 	const button = args.object as any;
 	const bindingContext = button.bindingContext;
-	console.log('🎯 Tapped item data:', bindingContext);
+	//console.log('🎯 Tapped item data:', bindingContext);
 }
 
 export class NavigationBar extends FlexboxLayout {
@@ -15,7 +15,7 @@ export class NavigationBar extends FlexboxLayout {
 
 	constructor() {
 		super();
-		console.log('✅ NavigationBar constructor initializing...');
+		//console.log('✅ NavigationBar constructor initializing...');
 		
 		// Set FlexboxLayout properties
 		this.className = 'navigation-bar';
@@ -25,7 +25,7 @@ export class NavigationBar extends FlexboxLayout {
 	}
 
 	private initWithItems(items: ObservableArray<any>) {
-		console.log(`🛠️ Initializing NavigationBar with ${items.length} items`);
+		//console.log(`🛠️ Initializing NavigationBar with ${items.length} items`);
 		
 		// Clear existing children
 		this.removeChildren();
@@ -55,9 +55,9 @@ export class NavigationBar extends FlexboxLayout {
 		defaultValue: new ObservableArray(),
 		affectsLayout: true,
 		valueChanged: (target: NavigationBar, oldValue, newValue) => {
-			console.log('🔄 NavItems changed!');
-			console.log('📋 New NavItems:', newValue);
-			console.log('📊 NavItems count:', newValue?.length || 0);
+			// console.log('🔄 NavItems changed!');
+			// console.log('📋 New NavItems:', newValue);
+			// console.log('📊 NavItems count:', newValue?.length || 0);
 			target.navItems = newValue;
 			if (newValue && newValue.length){
 				target.initWithItems(newValue);
