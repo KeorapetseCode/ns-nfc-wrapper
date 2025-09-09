@@ -14,15 +14,26 @@ export function onKeyTap(args: EventData): void {
     const button = args.object as Button;
     const viewModel = button.bindingContext as Observable;
     const keyValue = button.text as string;
-    let currentValue = viewModel.get('displayValue') as string;
+    let currentValue = viewModel.get('displayValue') || '';
+ 
+    //console.log('Current Value before if statement: ', currentValue);
 
-    if (currentValue.length < 1 && (keyValue === '←' || keyValue === '.' || keyValue === '00')){
-        //return;
-    } 
-    else if (keyValue === '←' && currentValue.length > 0) {
-        currentValue = currentValue.slice(0, -1);
-    } else {
-        currentValue += keyValue;
-    }   
-  viewModel.set('displayValue', currentValue);
+    if (keyValue) {
+        if (currentValue && currentValue.length > 0 && currentValue.length < 7) {
+
+            if (keyValue === '←')
+                currentValue = currentValue.slice(0, -1);
+            else if (keyValue === '.' && currentValue.includes('.'))
+                return; // Prevent multiple decimals
+            else if (currentValue.includes('.') && currentValue.split('.')[1].length >= 2) 
+                return; // Limit to 2 decimal places
+            else
+                currentValue += keyValue;
+        }
+        else if (!currentValue || currentValue.length === 0) {
+            if (keyValue !== '←' && keyValue !== '.' && keyValue !== '0')
+                currentValue += keyValue;
+        }
+    }
+    viewModel.set('displayValue', currentValue);
 }
