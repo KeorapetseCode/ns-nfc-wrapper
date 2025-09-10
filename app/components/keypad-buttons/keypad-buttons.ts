@@ -1,9 +1,23 @@
 import { Observable, EventData, View, Button } from '@nativescript/core';
+import { Nfc, NfcNdefData } from "nativescript-nfc";
+
+let currentAmount = '';
 
 export function onLoaded(args: EventData): void {
 
     const page = args.object as View;
     const viewModel = new Observable();
+    const nfc = new Nfc();
+
+    console.log("Check availability of NFC***********************");
+    nfc.available().then(avail => {
+        console.log(avail ? "NFC is available" : "NFC is not available");
+    });
+
+// Listen for tag discoveries
+    // nfc.setOnTagDiscoveredListener((data: NfcNdefData) => {
+    //     console.log("Tag payloads:", data.message);
+    // });
 
     viewModel.set('displayValue', '');
     page.bindingContext = viewModel;
@@ -36,4 +50,5 @@ export function onKeyTap(args: EventData): void {
         }
     }
     viewModel.set('displayValue', currentValue);
+    currentAmount = currentValue;
 }
