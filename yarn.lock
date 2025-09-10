@@ -216,6 +216,31 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@nativescript-community/ui-material-bottom-navigation@^7.2.71":
+  version "7.2.71"
+  resolved "https://registry.yarnpkg.com/@nativescript-community/ui-material-bottom-navigation/-/ui-material-bottom-navigation-7.2.71.tgz#f466b192c1838bfcd6e1fc2819c37f1158dde359"
+  integrity sha512-y1B9w+e8YtrmR5L9EUhDSUDKZAZ+LA/EeM39ABbp0r2/JZyrVhuhBQFOKv+IinqJBx3IugFsn9qmph78t5BhYw==
+  dependencies:
+    "@nativescript-community/ui-material-core" "^7.2.71"
+    "@nativescript-community/ui-material-core-tabs" "^7.2.71"
+
+"@nativescript-community/ui-material-core-tabs@^7.2.71":
+  version "7.2.71"
+  resolved "https://registry.yarnpkg.com/@nativescript-community/ui-material-core-tabs/-/ui-material-core-tabs-7.2.71.tgz#1a020c91d5f5492f212d1f231a731fc9697ea177"
+  integrity sha512-3BvIxz1LgaGxEA8E0/9TZZtHvNpXpaTlPVWiA1k6CgW7d/3p61U3S5cWD8kwHxJf5fe+RtogO2ZMmoneQEjiyA==
+  dependencies:
+    "@nativescript-community/ui-material-core" "^7.2.71"
+
+"@nativescript-community/ui-material-core@^7.2.71":
+  version "7.2.71"
+  resolved "https://registry.yarnpkg.com/@nativescript-community/ui-material-core/-/ui-material-core-7.2.71.tgz#2304efa85a9ada127e8e76af863c56fb5ae1349b"
+  integrity sha512-o2W1av/ev4RzFqXe7BLWFw1ueNLX/6jwSSGRwjnbEFMCxRjPWBNspgR0X3Dhq+4w88Pgl/0pmsh36ok9YdDzhA==
+
+"@nativescript/android@8.9.1":
+  version "8.9.1"
+  resolved "https://registry.yarnpkg.com/@nativescript/android/-/android-8.9.1.tgz#72a47c508b0d15ec1766dc427e9e9a1d2ff1e04e"
+  integrity sha512-9xy7Vp77icneQCv0fRVwYfJhuhqFYY3/nPoB7OeG/I78WITPUm+2fNyBj0A6Uu4qJ5/rhwiNAWCaVX0IGBs0oQ==
+
 "@nativescript/core@~8.9.0":
   version "8.9.5"
   resolved "https://registry.yarnpkg.com/@nativescript/core/-/core-8.9.5.tgz#696c0e9b1b996f98db69de5c02d4ab1dfbe67cd0"

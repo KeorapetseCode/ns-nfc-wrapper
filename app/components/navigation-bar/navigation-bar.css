@@ -1,0 +1,38 @@
+.navigation-bar {
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  height: 70;
+  min-height: 70;
+  border-top-width: 1;
+  border-color: #e0e0e0;
+}
+
+.navigation-button-wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-color: #f5f5f5; /* Default unselected state - light gray */
+}
+
+.navigation-button-wrapper.selected {
+  background-color: #2196F3; /* Selected state - blue */
+}
+
+.navigation-button-wrapper:active {
+  background-color: #1976D2; /* Darker blue when pressed */
+}
+
+.label {
+  font-size: 14;
+  text-align: center;
+  color: #666; /* Default gray text for unselected */
+  font-weight: bold;
+}
+
+.label.selected {
+  color: white; /* White text for selected */
+}

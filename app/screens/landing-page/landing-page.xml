@@ -1,0 +1,19 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      navigatingTo="navigatingTo"
+      xmlns:keypad="components/keypad-buttons">
+
+  <GridLayout rows="auto, *, auto" class="page">
+    
+    <!-- Top Illustration or Message -->
+    <StackLayout row="0" class="header-section">
+      <Image src="~/assets/pay01.png" stretch="aspectFit" width="120" height="120" />
+    </StackLayout>
+
+    <!-- Middle Interaction Area -->
+    <StackLayout row="1" class="interaction-section">
+      <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+      <keypad:keypad-buttons />
+    </StackLayout>
+    
+  </GridLayout>
+</Page>
