@@ -1,9 +1,9 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
-      navigatingTo="navigatingTo"
-      xmlns:keypad="components/keypad-buttons">
+  navigatingTo="navigatingTo"
+  xmlns:keypad="components/keypad-buttons">
 
   <GridLayout rows="auto, *, auto" class="page">
-    
+
     <!-- Top Illustration or Message -->
     <StackLayout row="0" class="header-section">
       <Image src="~/assets/pay01.png" stretch="aspectFit" width="120" height="120" />
@@ -12,8 +12,20 @@
     <!-- Middle Interaction Area -->
     <StackLayout row="1" class="interaction-section">
       <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
-      <keypad:keypad-buttons />
+
+      <StackLayout visibility="{{ isNfcAvailable ? 'visible' : 'collapsed' }}">
+        <keypad:keypad-buttons />
+      </StackLayout>
+
+      <StackLayout visibility="{{ isNfcAvailable ? 'collapsed' : 'visible' }}"
+        class="no-nfc-section">
+        <Label text="🚫" class="no-nfc-icon" />
+        <Label text="This device does not support NFC payments" class="no-nfc-message"
+          textWrap="true" />
+        <Label text="Please use a device with NFC capability" class="no-nfc-subtitle"
+          textWrap="true" />
+      </StackLayout>
     </StackLayout>
-    
+
   </GridLayout>
 </Page>

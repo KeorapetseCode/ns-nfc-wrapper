@@ -1,0 +1,85 @@
+/* ===== KEYPAD CONTAINER ===== */
+.keypad {
+    padding: 20;
+    background-color: #000000;
+    margin: 0;
+}
+
+/* ===== DISPLAY SECTION ===== */
+.amount-display {
+    padding: 10 10;
+    margin-bottom: 30;
+    text-align: left;
+    min-height: 40;
+    font-size: 48;
+    font-weight: 400;
+    background-color: #ffffff;
+    border-bottom-width: 1;
+    border-bottom-color: #d1d1d1;
+    color: #252222d1;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 0;
+}
+
+/* ===== REGULAR NUMBER BUTTONS ===== */
+.key-button {
+    font-size: 32;
+    font-weight: 400;
+    color: #000000;
+    background-color: #f9f9f923;
+    border-radius: 40;
+    border-width: 0;
+    margin: 8;
+    min-height: 80;
+    min-width: 80;
+    font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.key-button:highlighted {
+    background-color: #2196F3;
+}
+
+/* ===== CLEAR BUTTON (TOP ROW STYLE) ===== */
+.key-button-special {
+    font-size: 45;
+    font-weight: 400;
+    color: #2196F3;
+    background-color: #f8f9fa;
+    border-radius: 20;
+    border-width: 0;
+    margin: 8;
+    min-height: 80;
+    min-width: 80;
+}
+
+.key-button-special:highlighted {
+    background-color: #d1d1d1;
+}
+
+/* ===== PAY BUTTON (ORANGE ACCENT) ===== */
+.button-pay {
+    font-size: 24;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #ff9500;
+    border-radius: 40;
+    border-width: 0;
+    margin: 8;
+    min-height: 80;
+    font-family: "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.button-pay:highlighted {
+    background-color: #ffad33;
+    color: #ffffff;
+}
+
+.button-pay[isEnabled=false] {
+    background-color: #48484a;
+    color: #8e8e93;
+}
+
+/* ===== GRID LAYOUT ADJUSTMENTS ===== */
+.keypad GridLayout {
+    background-color: #000000;
+}

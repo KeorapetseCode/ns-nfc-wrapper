@@ -11,25 +11,75 @@ export function navigatingTo(args: EventData) {
     const viewModel = new Observable();
     const nfc = new Nfc();
     
-    // console.log("Check availability of NFC***********************");
-    nfc.available().then(avail => {
-        // 1. Set the initial text for the 'message' Label.
-        if (avail)
-            viewModel.set("message", "Enter amount, then tap to Pay");
-        
-        else
-            viewModel.set("message", "NFC is not available on this device");       
+    console.log("🔍 Checking NFC availability...");
+
+    nfc.available().then(nfcAvailable => {
+        if (true) { //brute forced for testing purposes
+            console.log("✅ NFC is available");
+            viewModel.set("message", "Tap To Pay");
+            viewModel.set("isNfcAvailable", true);
+            //viewModel.set("showKeypad", true);
+            
+            // Start NFC listener
+            nfc.setOnNdefDiscoveredListener((data) => {
+                console.log("💳 NFC Card detected!", data);
+                viewModel.set("message", "Card detected! Processing payment...");
+                processNfcPayment(data, viewModel);
+            }).then(() => {
+                console.log("🎧 NFC listener started successfully");
+            }).catch(err => {
+                console.log("❌ Failed to start NFC listener:", err);
+            });
+            
+        } else {
+            console.log("❌ NFC is not available");
+            viewModel.set("message", "NFC is not available on this device");
+            viewModel.set("isNfcAvailable", false);
+            viewModel.set("showKeypad", false);
+        }
+    }).catch(err => {
+        console.log("❌ Error checking NFC availability:", err);
+        viewModel.set("message", "Unable to check NFC availability");
+        viewModel.set("isNfcAvailable", false);
+        viewModel.set("showKeypad", false);
     });
 
-    // 2. Define the 'onPay' function for the button's tap event.
-    // The XML has: <btn:tab-button ... tap="{{ onPay }}" />
+    // Manual pay button (only works when NFC is available)
     viewModel.set("onPay", () => {
-        //console.log("Pay button was tapped!");
-        viewModel.set("message", "Processing payment...");
-        // You would add your navigation or payment logic here.
+        if (viewModel.get("isNfcAvailable")) {
+            console.log("💰 Manual Pay button tapped!");
+            viewModel.set("message", "Processing manual payment...");
+            processManualPayment(viewModel);
+        } else {
+            viewModel.set("message", "Payment not available - NFC required");
+        }
     });
 
     // Set the viewModel as the 'bindingContext' for the page.
     // This is the crucial step that links the XML bindings to this code.
     page.bindingContext = viewModel;
+}
+
+function processNfcPayment(nfcData: any, viewModel: Observable) {
+    console.log("🔄 Processing NFC payment with data:", nfcData);
+    
+    // TODO: Get amount from keypad component
+    // TODO: Send to your dummy_api.com
+    
+    setTimeout(() => {
+        viewModel.set("message", "NFC Payment successful! ✅");
+        console.log("✅ NFC Payment completed");
+    }, 2000);
+}
+
+function processManualPayment(viewModel: Observable) {
+    console.log("🔄 Processing manual payment");
+    
+    // TODO: Get amount from keypad component
+    // TODO: Send to your dummy_api.com
+    
+    setTimeout(() => {
+        viewModel.set("message", "Manual payment successful! ✅");
+        console.log("✅ Manual payment completed");
+    }, 2000);
 }
