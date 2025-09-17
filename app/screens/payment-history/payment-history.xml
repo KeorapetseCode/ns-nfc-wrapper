@@ -1,6 +1,6 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="onLoaded">
   <StackLayout class="page">
-    <Label text="Hello, Payment History!" class="h1 text-center" />
-    <Label text="This is your placeholder screen. 🎉" class="text-center" />
+    <Label text="Payment History" class="h1 text-center" />
+    <Label text="Screen Coming Soon!" class="text-center" />
   </StackLayout>
 </Page>
