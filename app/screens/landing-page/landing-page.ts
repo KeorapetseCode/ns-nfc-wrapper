@@ -14,7 +14,7 @@ export function navigatingTo(args: EventData) {
     console.log("🔍 Checking NFC availability...");
 
     nfc.available().then(nfcAvailable => {
-        if (true) { //brute forced for testing purposes
+        if (nfcAvailable) { //brute forced for testing purposes
             console.log("✅ NFC is available");
             viewModel.set("message", "Tap To Pay");
             viewModel.set("isNfcAvailable", true);
