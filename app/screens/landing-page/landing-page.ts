@@ -29,7 +29,7 @@ export function navigatingTo(args: EventData) {
                     viewModel.set("isNfcAvailable", true);
                     
                     // Initialize Yoco authentication after NFC check passes
-                    initializeYocoAuth(viewModel); //Todo: move this to its own try catch
+                    //initializeYocoAuth(viewModel); //Todo: move this to its own try catch
                     
                 } else {
                     console.log("⚠️ NFC is available but disabled");
@@ -57,55 +57,55 @@ export function navigatingTo(args: EventData) {
     page.bindingContext = viewModel;
 }
 
-function initializeYocoAuth(viewModel: Observable) {
+// function initializeYocoAuth(viewModel: Observable) {
 
-    console.log("🔐 Initializing Yoco authentication...");
+//     console.log("🔐 Initializing Yoco authentication...");
 
-    // TODO: Replace with your actual Yoco API credentials
-    const yocoConfig = {
-        client_id: "",
-        response_type: "code",
-        scope: "offline_access",
-        redirect_uri: "https://core.versofy.cloud",
-        state: "random_state_string",
-    };
+//     // TODO: Replace with your actual Yoco API credentials
+//     const yocoConfig = {
+//         client_id: "",
+//         response_type: "code",
+//         scope: "offline_access",
+//         redirect_uri: "https://core.versofy.cloud", //change this to your Github account or LinkedIn profile
+//         state: "random_state_string",
+//     };
 
-    const queryParams = new URLSearchParams({
-        client_id: yocoConfig.client_id,
-        redirect_uri: yocoConfig.redirect_uri,
-        response_type: yocoConfig.response_type,
-        scope: yocoConfig.scope,
-        state: yocoConfig.state,
-    }).toString();
+//     const queryParams = new URLSearchParams({
+//         client_id: yocoConfig.client_id,
+//         redirect_uri: yocoConfig.redirect_uri,
+//         response_type: yocoConfig.response_type,
+//         scope: yocoConfig.scope,
+//         state: yocoConfig.state,
+//     }).toString();
 
-    const authRequest = {
-        url: `https://iam.yocosandbox.com/oauth2/auth?${queryParams}`,
-        method: "POST",
-    };
+//     const authRequest = {
+//         url: `https://iam.yocosandbox.com/oauth2/auth?${queryParams}`,
+//         method: "POST",
+//     };
     
-    Http.request(authRequest).then(response => {
-        console.log("ℹ️ Yoco authentication response:", response);
-        // if (response.statusCode === 200) {
-        //     const authData = response.content.toJSON();
-        //     console.log("✅ Yoco authentication successful:", authData);
+//     Http.request(authRequest).then(response => {
+//         console.log("ℹ️ Yoco authentication response:", response);
+//         // if (response.statusCode === 200) {
+//         //     const authData = response.content.toJSON();
+//         //     console.log("✅ Yoco authentication successful:", authData);
             
-        //     // Store auth token for payment processing
-        //     viewModel.set("yocoAuthToken", authData.token || authData.access_token);
-        //     viewModel.set("yocoInitialized", true);
-        //     viewModel.set("message", "Ready - Tap your card");
+//         //     // Store auth token for payment processing
+//         //     viewModel.set("yocoAuthToken", authData.token || authData.access_token);
+//         //     viewModel.set("yocoInitialized", true);
+//         //     viewModel.set("message", "Ready - Tap your card");
             
-        //     // TODO: Implement NFC card detection when a compatible library is available
+//         //     // TODO: Implement NFC card detection when a compatible library is available
             
-        // } else {
-        //     console.log("❌ Yoco authentication failed:", response.statusCode);
-        //     console.log({ response })
-        //     viewModel.set("message", "Payment service unavailable");
-        //     viewModel.set("yocoInitialized", false);
+//         // } else {
+//         //     console.log("❌ Yoco authentication failed:", response.statusCode);
+//         //     console.log({ response })
+//         //     viewModel.set("message", "Payment service unavailable");
+//         //     viewModel.set("yocoInitialized", false);
             
-        // }
-    }).catch(error => {
-        console.log("❌ Yoco authentication error:", error);
-        viewModel.set("message", "Payment service connection failed");
-        viewModel.set("yocoInitialized", false);
-    });
-}
+//         // }
+//     }).catch(error => {
+//         console.log("❌ Yoco authentication error:", error);
+//         viewModel.set("message", "Payment service connection failed");
+//         viewModel.set("yocoInitialized", false);
+//     });
+// }
