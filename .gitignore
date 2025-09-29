@@ -3,6 +3,9 @@ hooks/
 node_modules/
 platforms/
 
+# Firebase
+App_Resources/Android/google-services.json
+
 # Logs
 logs
 *.log

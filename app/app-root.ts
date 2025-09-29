@@ -1,15 +1,1 @@
-import { EventData, Observable, Page } from '@nativescript/core';
-
-export function onPageLoaded(args: EventData) {
-    
-    const page = args.object as Page;
-    const vm = new Observable();
-
-    vm.set('navItems', [
-        { title: 'Pay', buttonName: 'pay' },
-        { title: 'History', buttonName: 'history' }
-    ]);
-
-    vm.set('selectedIndex', 0); // Initial tab
-    page.bindingContext = vm;
-}
+import { EventData, Observable, Page } from '@nativescript/core';import { firebase } from '@nativescript/firebase-core';export function onPageLoaded(args: EventData) {    const page = args.object as Page;    const vm = new Observable();    vm.set('navItems', [        { title: 'Pay', buttonName: 'pay' },        { title: 'History', buttonName: 'history' }    ]);	const defaultApp = initializeFirebase();	console.log({ defaultApp });    vm.set('selectedIndex', 0); // Initial active tab    page.bindingContext = vm;}export async function initializeFirebase(){	const defaultApp = await firebase().initializeApp()	return defaultApp;}
