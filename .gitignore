@@ -4,7 +4,7 @@ node_modules/
 platforms/
 
 # Firebase
-App_Resources/Android/google-services.json
+App_Resources/Android/src/google-services.json
 
 # Logs
 logs
