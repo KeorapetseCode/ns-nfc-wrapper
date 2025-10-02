@@ -1,20 +1,63 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
-  xmlns:mdt="@nativescript-community/ui-material-bottom-navigation"
-  xmlns:nav="~./components/navigation-bar/navigation-bar"
-  loaded="onPageLoaded">
-  <GridLayout rows="*, auto">
-    <!-- Content area: BottomNavigation without TabStrip for custom bar integration -->
-    <mdt:BottomNavigation id="bottomNav" row="0" selectedIndex="{{ selectedIndex }}">
-      <mdt:TabContentItem>
-        <Frame id="payFrame" defaultPage="screens/landing-page/landing-page" />
-      </mdt:TabContentItem>
-      <mdt:TabContentItem>
-        <Frame id="historyFrame" defaultPage="screens/payment-history/payment-history" />
-      </mdt:TabContentItem>
-      <!-- Add more TabContentItems as needed -->
-    </mdt:BottomNavigation>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      xmlns:mdc="@nativescript-community/ui-material-bottom-navigation" 
+      loaded="onLoaded" 
+      class="page">
+    
+    <!-- Login Screen (shown when not authenticated) -->
+    <StackLayout visibility="{{ isAuthenticated ? 'collapse' : 'visible' }}" class="login-container">
+        <!-- Logo Section -->
+        <StackLayout class="logo-section">
+            <Image src="~/App_Resources/Android/src/main/res/drawable-xxhdpi/logo.png" 
+                   class="app-logo" 
+                   stretch="aspectFit" />
+            <Label text="Welcome Back" class="welcome-title" />
+            <Label text="Choose your preferred login method" class="welcome-subtitle" />
+        </StackLayout>
 
-    <!-- Custom persistent bottom bar component -->
-    <nav:NavigationBar row="1" navItems="{{ navItems }}" selectedIndex="{{ selectedIndex }}" />
-  </GridLayout>
+        <!-- Login Providers Section -->
+        <StackLayout class="login-providers">
+            <Label text="Continue with" class="providers-title" />
+            
+            <!-- Yahoo Login -->
+            <Button text="Continue with Yahoo" 
+                    tap="{{ onYahooLogin }}" 
+                    class="login-btn yahoo-btn" />
+        </StackLayout>
+
+        <!-- Footer -->
+        <StackLayout class="login-footer">
+            <Label text="By continuing, you agree to our Terms of Service and Privacy Policy" 
+                   class="footer-text" 
+                   textWrap="true" />
+        </StackLayout>
+    </StackLayout>
+
+    <!-- Main App Navigation (shown when authenticated) -->
+    <mdc:BottomNavigation visibility="{{ isAuthenticated ? 'visible' : 'collapse' }}" 
+                          selectedIndex="{{ selectedIndex }}" 
+                          tabSelected="{{ onTabSelected }}"
+                          class="bottom-nav">
+        
+        <mdc:TabStrip class="tab-strip">
+            <mdc:TabStripItem class="tab-strip-item">
+                <Label text="Payment" class="tab-label"></Label>
+                <Image src="font://&#xf09d;" class="tab-icon fas"></Image>
+            </mdc:TabStripItem>
+            <mdc:TabStripItem class="tab-strip-item">
+                <Label text="History" class="tab-label"></Label>
+                <Image src="font://&#xf1da;" class="tab-icon fas"></Image>
+            </mdc:TabStripItem>
+            <mdc:TabStripItem class="tab-strip-item">
+                <Label text="Settings" class="tab-label"></Label>
+                <Image src="font://&#xf013;" class="tab-icon fas"></Image>
+            </mdc:TabStripItem>
+        </mdc:TabStrip>
+
+        <mdc:TabContentItem>
+            <Frame defaultPage="screens/landing-page/landing-page"></Frame>
+        </mdc:TabContentItem>
+        <mdc:TabContentItem>
+            <Frame defaultPage="screens/payment-history-page/history-page"></Frame>
+        </mdc:TabContentItem>
+    </mdc:BottomNavigation>
 </Page>

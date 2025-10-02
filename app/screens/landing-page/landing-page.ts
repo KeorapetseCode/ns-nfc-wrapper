@@ -16,31 +16,34 @@ export function navigatingTo(args: EventData) {
     // Check NFC availability using native Android API
     try {
         if (Application.android) {
-            const context = Utils.ad.getApplicationContext();
-            const nfcManager = context.getSystemService(android.content.Context.NFC_SERVICE);
+            viewModel.set("showKeypad", true);
+            viewModel.set("isNfcAvailable", true);
+
+            // const context = Utils.ad.getApplicationContext();
+            // const nfcManager = context.getSystemService(android.content.Context.NFC_SERVICE);
             
-            if (nfcManager && nfcManager.getDefaultAdapter()) {
-                const nfcAdapter = nfcManager.getDefaultAdapter();
-                const isEnabled = nfcAdapter.isEnabled();
+            // if (nfcManager && nfcManager.getDefaultAdapter()) {
+            //     const nfcAdapter = nfcManager.getDefaultAdapter();
+            //     const isEnabled = nfcAdapter.isEnabled();
                 
-                if (isEnabled) {
-                    console.log("✅ NFC is available and enabled");
-                    viewModel.set("message", "Initializing Yoco...");
-                    viewModel.set("isNfcAvailable", true);
+            //     if (isEnabled) {
+            //         console.log("✅ NFC is available and enabled");
+            //         viewModel.set("message", "Initializing Yoco...");
+            //         viewModel.set("isNfcAvailable", true);
                     
-                    // Initialize Yoco authentication after NFC check passes
-                    //initializeYocoAuth(viewModel); //Todo: move this to its own try catch
+            //         // Initialize Yoco authentication after NFC check passes
+            //         //initializeYocoAuth(viewModel); //Todo: move this to its own try catch
                     
-                } else {
-                    console.log("⚠️ NFC is available but disabled");
-                    viewModel.set("message", "Please enable NFC in device settings");
-                    viewModel.set("isNfcAvailable", false);
-                }
-            } else {
-                console.log("❌ NFC is not available on this device");
-                viewModel.set("message", "NFC not supported on this device");
-                viewModel.set("isNfcAvailable", false);
-            }
+            //     } else {
+            //         console.log("⚠️ NFC is available but disabled");
+            //         viewModel.set("message", "Please enable NFC in device settings");
+            //         viewModel.set("isNfcAvailable", false);
+            //     }
+            // } else {
+            //     console.log("❌ NFC is not available on this device");
+            //     viewModel.set("message", "NFC not supported on this device");
+            //     viewModel.set("isNfcAvailable", false);
+            // }
         } else {
             console.log("❌ Not running on Android");
             viewModel.set("message", "NFC only available on Android");
