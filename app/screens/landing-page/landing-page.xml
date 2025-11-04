@@ -6,7 +6,7 @@
 
     <!-- Top Illustration or Message -->
     <StackLayout row="0" class="header-section">
-      <Image src="~/assets/pay01.png" stretch="aspectFit" width="120" height="120" />
+      <Image src="~/assets/landing-page/pay01.png" stretch="aspectFit" width="120" height="120" />
     </StackLayout>
 
     <!-- Middle Interaction Area -->
