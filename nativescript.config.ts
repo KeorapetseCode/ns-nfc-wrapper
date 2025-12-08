@@ -1,7 +1,7 @@
 import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
-  id: 'org.nativescript.nsnfcwrapper',
+  id: 'com.keorapetsecode.nsnfcwrapper',
   appPath: 'app',
   appResourcesPath: 'App_Resources',
   android: {
