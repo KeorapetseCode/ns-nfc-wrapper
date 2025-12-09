@@ -57,7 +57,7 @@
             <Frame defaultPage="screens/landing-page/landing-page"></Frame>
         </mdc:TabContentItem>
         <mdc:TabContentItem>
-            <Frame defaultPage="screens/payment-history-page/history-page"></Frame>
+            <Frame defaultPage="screens/payment-history/payment-history"></Frame>
         </mdc:TabContentItem>
     </mdc:BottomNavigation>
 </Page>

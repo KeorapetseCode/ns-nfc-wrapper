@@ -1,7 +1,7 @@
 {
-  "name": "ns-yoco-wrapper",
+  "name": "ns-nfc-wrapper",
   "main": "app/app.ts",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "@nativescript-community/ui-material-bottom-navigation": "^7.2.71",
