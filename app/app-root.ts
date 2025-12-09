@@ -41,10 +41,10 @@ export function onPageLoaded(args: EventData) {
 	vm.set('selectedIndex', 0); // Initial active tab
 
     // Login provider handlers
-    vm.set("onYahooLogin", () => {
-        console.log("🔐 Yahoo login tapped");
-        handleSocialLogin("yahoo", vm);
-    });
+    // vm.set("onYahooLogin", () => {
+    //     console.log("🔐 Yahoo login tapped");
+    //     handleSocialLogin("yahoo", vm);
+    // });
 
     // Navigation handler
     vm.set("onTabSelected", (args: any) => {
@@ -55,15 +55,15 @@ export function onPageLoaded(args: EventData) {
     page.bindingContext = vm;
 }
 
-function handleSocialLogin(provider: string, viewModel: Observable) {
-    console.log(`🔐 Initiating ${provider} login...`);
+// function handleSocialLogin(provider: string, viewModel: Observable) {
+//     console.log(`🔐 Initiating ${provider} login...`);
     
-    // TODO: Implement actual social login logic here with Firebase Auth
-    // For now, simulate login process
+//     // TODO: Implement actual social login logic here with Firebase Auth
+//     // For now, simulate login process
     
-    setTimeout(() => {
-        console.log(`✅ ${provider} login successful`);
-        // Simulate successful authentication
-        viewModel.set("isAuthenticated", true);
-    }, 1500);
-}
+//     setTimeout(() => {
+//         console.log(`✅ ${provider} login successful`);
+//         // Simulate successful authentication
+//         viewModel.set("isAuthenticated", true);
+//     }, 1500);
+// }
