@@ -1,20 +1,50 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd"
-  xmlns:mdt="@nativescript-community/ui-material-bottom-navigation"
-  xmlns:nav="~./components/navigation-bar/navigation-bar"
-  loaded="onPageLoaded">
-  <GridLayout rows="*, auto">
-    <!-- Content area: BottomNavigation without TabStrip for custom bar integration -->
-    <mdt:BottomNavigation id="bottomNav" row="0" selectedIndex="{{ selectedIndex }}">
-      <mdt:TabContentItem>
-        <Frame id="payFrame" defaultPage="screens/landing-page/landing-page" />
-      </mdt:TabContentItem>
-      <mdt:TabContentItem>
-        <Frame id="historyFrame" defaultPage="screens/payment-history/payment-history" />
-      </mdt:TabContentItem>
-      <!-- Add more TabContentItems as needed -->
-    </mdt:BottomNavigation>
+    xmlns:navimp="@nativescript-community/ui-material-bottom-navigation" class="page"
+    xmlns:navcomp="~./components/navigation-bar/navigation-bar" loaded="onPageLoaded">
 
-    <!-- Custom persistent bottom bar component -->
-    <nav:NavigationBar row="1" navItems="{{ navItems }}" selectedIndex="{{ selectedIndex }}" />
-  </GridLayout>
+    <GridLayout rows="*, auto">
+        <!-- Main App Navigation (shown when authenticated) -->
+
+        <StackLayout visibility="{{ isAuthenticated ? 'collapse' : 'visible' }}" class="login-container">
+            <!-- Logo Section -->
+            <StackLayout class="logo-section">
+                <Image src="~/App_Resources/Android/src/main/res/drawable-xxxhdpi/ic_launcher.png" class="app-logo" stretch="aspectFit" />
+                <Label text="Welcome Back" class="welcome-title" />
+                <Label text="Choose your preferred login method" class="welcome-subtitle" />
+            </StackLayout>
+
+            <!-- Login Providers Section -->
+            <StackLayout class="login-providers">
+                <Label text="Continue with" class="providers-title" />
+
+                <!-- Google Login -->
+                <Button text="Continue with Google" tap="{{ onGoogleLogin }}" class="login-btn google-btn" />
+                <!-- Facebook Login -->
+                <Button text="Continue with Facebook" tap="{{ onFacebookLogin }}" class="login-btn facebook-btn" />
+                <!-- Yahoo Login -->
+                <Button text="Continue with Yahoo" tap="{{ onYahooLogin }}" class="login-btn yahoo-btn" />
+            </StackLayout>
+
+            <!-- Footer -->
+            <StackLayout class="login-footer">
+                <Label text="By continuing, you agree to our Terms of Service and Privacy Policy" class="footer-text" textWrap="true" />
+            </StackLayout>
+        </StackLayout>
+
+
+        <navimp:BottomNavigation id="bottomNav" row="0" selectedIndex="{{ selectedIndex }}" visibility="{{ isAuthenticated ? 'visible' : 'collapse' }}">
+
+            <navimp:TabContentItem>
+                <Frame id="payFrame" defaultPage="screens/landing-page/landing-page" />
+            </navimp:TabContentItem>
+            <navimp:TabContentItem>
+                <Frame id="historyFrame" defaultPage="screens/payment-history/payment-history" />
+            </navimp:TabContentItem>
+            <!-- Add more TabContentItems as needed -->
+
+        </navimp:BottomNavigation>
+
+        <!-- Custom persistent bottom bar component -->
+        <navcomp:NavigationBar row="1" navItems="{{ navItems }}" selectedIndex="{{ selectedIndex }}" visibility="{{ isAuthenticated ? 'visible' : 'collapse' }}" />
+    </GridLayout>
 </Page>

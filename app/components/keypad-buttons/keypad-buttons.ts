@@ -1,5 +1,7 @@
 import { Observable, EventData, View, Button } from '@nativescript/core';
 
+let currentAmount = '';
+
 export function onLoaded(args: EventData): void {
 
     const page = args.object as View;
@@ -15,8 +17,6 @@ export function onKeyTap(args: EventData): void {
     const viewModel = button.bindingContext as Observable;
     const keyValue = button.text as string;
     let currentValue = viewModel.get('displayValue') || '';
- 
-    //console.log('Current Value before if statement: ', currentValue);
 
     if (keyValue) {
         if (currentValue && currentValue.length > 0 && currentValue.length < 7) {
@@ -36,4 +36,5 @@ export function onKeyTap(args: EventData): void {
         }
     }
     viewModel.set('displayValue', currentValue);
+    currentAmount = currentValue;
 }

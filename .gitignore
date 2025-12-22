@@ -3,6 +3,9 @@ hooks/
 node_modules/
 platforms/
 
+# Firebase
+App_Resources/Android/src/google-services.json
+
 # Logs
 logs
 *.log
@@ -17,6 +20,7 @@ yarn-error.log*
 .idea
 .cloud
 .project
+.env
 tmp/
 typings/
 

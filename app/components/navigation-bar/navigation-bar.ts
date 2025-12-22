@@ -112,9 +112,6 @@ export class NavigationBar extends FlexboxLayout {
 		defaultValue: new ObservableArray(),
 		affectsLayout: true,
 		valueChanged: (target: NavigationBar, oldValue, newValue) => {
-			// console.log('🔄 NavItems changed!');
-			// console.log('📋 New NavItems:', newValue);
-			// console.log('📊 NavItems count:', newValue?.length || 0);
 			target.navItems = newValue;
 			if (newValue && newValue.length){
 				target.initWithItems(newValue);
