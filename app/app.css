@@ -74,7 +74,23 @@
 .yahoo-btn:highlighted {
     background-color: #5d0c82;
 }
+.google-btn {
+    background-color: #db4437;
+    color: #ffffff;
+    border-color: #db4437;
+}
+.google-btn:highlighted {
+    background-color: #db4437;
+}
 
+.facebook-btn {
+    background-color: #3b5998;
+    color: #ffffff;
+    border-color: #3b5998;
+}
+.facebook-btn:highlighted {
+    background-color: #2d4373;
+}
 /* Footer */
 .login-footer {
     margin-top: 40;
