@@ -8,31 +8,30 @@ export function onPageLoaded(args: EventData) {
     const vm = new Observable();
 
     // Initialize authentication state
-    vm.set("isAuthenticated", false);
+    vm.set("isAuthenticated", true); //Change this to true to simulate logged in
     vm.set("selectedIndex", 0);
-
     // Initialize Firebase first
     console.log("🔥 Initializing Firebase Core...");
-    firebase().initializeApp().then(() => {
+    // firebase().initializeApp().then(() => {
 
-        console.log("✅ Firebase Core initialized successfully");
+    //     console.log("✅ Firebase Core initialized successfully");
 
-        // Initialize Firebase Auth
-	console.log("🔐 Initializing Firebase Auth...");
-        return firebase().auth().addAuthStateChangeListener((user) => {
-            if (user) {
-                console.log("✅ User is authenticated:", user.email);
-                vm.set("isAuthenticated", true);
-            } else {
-                console.log("❌ User is not authenticated");
-                vm.set("isAuthenticated", false);
-            }
-        });
-    }).catch(error => {
-        console.log("❌ Firebase initialization failed:", error);
-        // Still show login screen even if Firebase fails
-        vm.set("isAuthenticated", false);
-    });
+    //     // Initialize Firebase Auth
+	// console.log("🔐 Initializing Firebase Auth...");
+    //     return firebase().auth().addAuthStateChangeListener((user) => {
+    //         if (user) {
+    //             console.log("✅ User is authenticated:", user.email);
+    //             vm.set("isAuthenticated", true);
+    //         } else {
+    //             console.log("❌ User is not authenticated");
+    //             vm.set("isAuthenticated", false);
+    //         }
+    //     });
+    // }).catch(error => {
+    //     console.log("❌ Firebase initialization failed:", error);
+    //     // Still show login screen even if Firebase fails
+    //     vm.set("isAuthenticated", false);
+    // });
 
     vm.set('navItems', [
         { title: 'Pay', buttonName: 'pay' },
